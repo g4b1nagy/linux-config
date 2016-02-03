@@ -183,7 +183,9 @@ echo '
 # Preferences => Settings - User
 echo '
 {
+  "auto_close_tags": false,
   "auto_complete": false,
+  "enable_tab_scrolling": false,
   "ensure_newline_at_eof_on_save": true,
   "font_size": 9,
   "spell_check": false,
