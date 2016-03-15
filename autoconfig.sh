@@ -129,11 +129,13 @@ Host 188.166.70.97
 # =========================================================================
 
 mkdir -p /home/gabi/.vim/colors/
-cp molokai.vim /home/gabi/.vim/colors/
+cd /home/gabi/.vim/colors/
+wget https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim
 
 echo '
-set tabstop=2
+set tabstop=4
 set expandtab
+syntax on
 colorscheme molokai
 set t_Co=256
 ' >> /home/gabi/.vimrc
