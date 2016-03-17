@@ -173,7 +173,7 @@ Host 91.209.189.229
 # /var/www/html
 # =========================================================================
 
-sudo chown $USER:$USER -R /var/www/html/
+sudo chown gabi:gabi -R /var/www/html/
 sudo chmod 755 -R -R /var/www/html/
 
 
