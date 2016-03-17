@@ -2,15 +2,43 @@
 
 
 # =========================================================================
-# INSTALL PACKAGES
+# Install packages
 # =========================================================================
 
+packages="
+audacious
+audacity
+build-essential
+filezilla
+gconftool-2
+gimp
+git
+guake
+imagemagick
+inkscape
+lamp-server^
+lftp
+mongodb
+nodejs
+npm
+pyrenamer
+python-dev
+python-pip
+python-virtualenv
+python3-dev
+sqlite3
+tesseract-ocr
+vim
+virtualbox
+virtualbox-guest-additions-iso
+vlc
+"
 sudo apt-get update
-sudo apt-get install audacious audacity build-essential filezilla gconf-editor gimp git guake imagemagick inkscape lamp-server^ lftp mongodb nodejs npm pyrenamer python-dev python-pip python-virtualenv python3-dev sqlite3 tesseract-ocr vim virtualbox virtualbox-guest-additions-iso vlc
+sudo apt-get install $packages
 
 
 # =========================================================================
-# APPLY SETTINGS
+# Desktop settings
 # =========================================================================
 
 gsettings set com.canonical.desktop.interface scrollbar-mode normal # display normal scrollbars instead of overlay
@@ -42,7 +70,7 @@ gsettings set org.gnome.gedit.preferences.editor scheme oblivion
 gsettings set org.gnome.gedit.preferences.editor tabs-size 2
 gsettings set org.gnome.gedit.preferences.editor use-default-font false
 
-gsettings set org.gnome.gnome-screenshot auto-save-directory file:///home/gabi/Desktop/
+gsettings set org.gnome.gnome-screenshot auto-save-directory file:///home/$USER/Desktop/
 
 gsettings set org.gnome.nautilus.icon-view default-zoom-level small
 gsettings set org.gnome.nautilus.list-view default-zoom-level smallest
@@ -60,164 +88,159 @@ gsettings set org.gtk.Settings.FileChooser show-hidden false
 
 
 # =========================================================================
-# BASHRC
+# Bash
 # =========================================================================
 
-out='/home/gabi/.bashrc'
-
-echo "
-
-
+echo "\n\n\n
 # =========================================================================
-# gabi's stuff
+# $USER's stuff
 # =========================================================================
-" >> $out
 
-echo '
 check_virtualenv() {
-    if [ -e .venv ]
+    if [ -e venv ]
     then
-        source .venv/bin/activate
+        source venv/bin/activate
     fi
 }
-venv_cd() {
-    builtin cd "$@" && check_virtualenv
+virtualenv_cd() {
+    builtin cd \"$@\" && check_virtualenv
 }
-check_virtualenv
-alias cd="venv_cd"
-' >> $out
+alias cd='virtualenv_cd'
 
-echo "
+
 alias ton='gsettings set org.gnome.settings-daemon.peripherals.touchpad touchpad-enabled true'
 alias toff='gsettings set org.gnome.settings-daemon.peripherals.touchpad touchpad-enabled false'
+
 
 alias ls='ls -lh --color=auto'
 alias py='python3'
 
+
 alias s='git status'
 alias d='git diff'
 alias c='git checkout'
-" >> $out
+" >> /home/$USER/.bashrc
 
 
 # =========================================================================
-# LAMP
+# Vim
 # =========================================================================
 
-sudo chown gabi:gabi -R /var/www/html/
-sudo chmod 755 -R /var/www/html/
+mkdir -p /home/$USER/.vim/colors/
+wget -P /home/$USER/.vim/colors/ https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim
+
+echo "
+set tabstop=4
+set expandtab
+syntax on
+colorscheme molokai
+set t_Co=256
+" >> /home/$USER/.vimrc
+
+sudo update-alternatives --config editor
+
+
+# =========================================================================
+# Git
+# =========================================================================
+
+git config --global user.name "Gabi Nagy"
+git config --global user.email gabrian.nagy@gmail.com
+git config --global color.ui true
 
 
 # =========================================================================
 # SSH
 # =========================================================================
 
-mkdir -p /home/gabi/.ssh/
-cp id_rsa* /home/gabi/.ssh/
-
-echo '
+mkdir -p /home/$USER/.ssh/
+echo "
 Host 188.166.33.15
-  ForwardAgent yes
+    ForwardAgent yes
 
 Host 188.166.70.97
-  ForwardAgent yes
-' >> /home/gabi/.ssh/config
+    ForwardAgent yes
+
+Host 91.209.189.229
+    ForwardAgent yes
+" >> /home/$USER/.ssh/config
 
 
 # =========================================================================
-# VIM
+# /var/www/html
 # =========================================================================
 
-mkdir -p /home/gabi/.vim/colors/
-cd /home/gabi/.vim/colors/
-wget https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim
-
-echo '
-set tabstop=4
-set expandtab
-syntax on
-colorscheme molokai
-set t_Co=256
-' >> /home/gabi/.vimrc
-
-sudo update-alternatives --config editor
+sudo chown $USER:$USER -R /var/www/html/
+sudo chmod 755 -R -R /var/www/html/
 
 
 # =========================================================================
-# OTHERS
+# Others
 # =========================================================================
 
-echo '
+echo "
 .headers on
 .mode column
-' >> /home/gabi/.sqliterc
+" >> /home/$USER/.sqliterc
 
-git config --global user.name "Gabi Nagy"
-git config --global user.email gabrian.nagy@gmail.com
-git config --global color.ui true
+mkdir -p /home/$USER/.config/autostart/
+echo "
+[Desktop Entry]
+Type=Application
+Exec=guake
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=guake
+Name=guake
+Comment[en_US]=
+Comment=
+" > /home/$USER/.config/autostart/guake.desktop
+
+gconftool-2 --set /apps/guake/keybindings/global/show_hide "<Control>space" -t string
+gconftool-2 --set /apps/guake/keybindings/local/new_tab "<Primary><Shift>n" -t string
+gconftool-2 --set /apps/guake/keybindings/local/next_tab "<Primary><Shift>Right" -t string
+gconftool-2 --set /apps/guake/keybindings/local/previous_tab "<Primary><Shift>Left" -t string
 
 sudo locale-gen ro_RO.UTF-8
 
 
 # =========================================================================
-# SUBLIME TEXT
+# Sublime Text 3
 # =========================================================================
 
-mkdir -p /home/gabi/.config/sublime-text-2/Packages/User/
+mkdir -p /home/$USER/.config/sublime-text-3/Packages/User/
 
 echo '
 [
-  {"command": "expand_selection", "args": {"to": "line"}},
-  {"command": "left_delete"}
+    {"command": "expand_selection", "args": {"to": "line"}},
+    {"command": "left_delete"}
 ]
-' > '/home/gabi/.config/sublime-text-2/Packages/User/Delete line.sublime-macro'
+' > /home/$USER/.config/sublime-text-3/Packages/User/DeleteLine.sublime-macro
 
 # Preferences => Key Bindings - User
 echo '
 [
-  { "keys": ["ctrl+d"], "command": "run_macro_file", "args": {"file": "Packages/User/Delete line.sublime-macro"}},
-  { "keys": ["ctrl+tab"], "command": "next_view" },
-  { "keys": ["ctrl+shift+tab"], "command": "prev_view" },
-  { "keys": ["ctrl+f"], "command": "show_panel", "args": { "panel": "find", "in_selection": false } }
+    { "keys": ["ctrl+d"], "command": "run_macro_file", "args": {"file": "Packages/User/DeleteLine.sublime-macro"}},
+    { "keys": ["ctrl+tab"], "command": "next_view" },
+    { "keys": ["ctrl+shift+tab"], "command": "prev_view" },
+    { "keys": ["ctrl+f"], "command": "show_panel", "args": { "panel": "find", "in_selection": false } }
 ]
-' > '/home/gabi/.config/sublime-text-2/Packages/User/Default (Linux).sublime-keymap'
+' > '/home/$USER/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap'
 
 # Preferences => Settings - User
 echo '
 {
-  "auto_close_tags": false,
-  "auto_complete": false,
-  "enable_tab_scrolling": false,
-  "ensure_newline_at_eof_on_save": true,
-  "font_size": 9,
-  "spell_check": false,
-  "tab_completion": false,
-  "tab_size": 2,
-  "translate_tabs_to_spaces": true,
-  "trim_trailing_white_space_on_save": true,
-  "word_wrap": true
+    "auto_close_tags": false,
+    "auto_complete": false,
+    "enable_tab_scrolling": false,
+    "ensure_newline_at_eof_on_save": true,
+    "font_size": 9,
+    "spell_check": false,
+    "tab_completion": false,
+    "tab_size": 4,
+    "translate_tabs_to_spaces": true,
+    "trim_trailing_white_space_on_save": true,
+    "word_wrap": true
 }
-' > '/home/gabi/.config/sublime-text-2/Packages/User/Preferences.sublime-settings'
-
-
-# =========================================================================
-# FSTAB
-# =========================================================================
-
-# sudo mkdir /home/saved/
-# sudo mount -t auto -v /dev/sda6 /home/saved/
-
-# uuid=`sudo blkid -o value -s UUID /dev/sda6`
-# sudo echo "
-# UUID=$uuid    /home/saved/    ext4    defaults    0    2" >> /etc/fstab
-
-# ln -s /home/saved/ /home/gabi/Desktop/saved
-
-
-# =========================================================================
-# MANUAL
-# =========================================================================
-
-# * gconf-editor: apps => guake => keybindings => global => show_die to '<Control>space'
-# * add guake to startup applications
-# * guake preferences i.e. height, transparency, shortcuts
+' > /home/$USER/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
