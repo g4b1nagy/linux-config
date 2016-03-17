@@ -91,7 +91,10 @@ gsettings set org.gtk.Settings.FileChooser show-hidden false
 # Bash
 # =========================================================================
 
-echo "\n\n\n
+echo "
+
+
+
 # =========================================================================
 # $USER's stuff
 # =========================================================================
@@ -103,7 +106,7 @@ check_virtualenv() {
     fi
 }
 virtualenv_cd() {
-    builtin cd \"$@\" && check_virtualenv
+    builtin cd \"\$@\" && check_virtualenv
 }
 alias cd='virtualenv_cd'
 
