@@ -111,6 +111,33 @@ virtualenv_cd() {
 alias cd='virtualenv_cd'
 
 
+pusheen() {
+cat<<\"EOT\"
+Mew
+  \\
+   ▐▀▄       ▄▀▌   ▄▄▄▄▄▄▄
+   ▌  ▀▄▄▄▄▄▀  ▐▄▀▀ ██ ██ ▀▀▄
+  ▐    ▀ ▀ ▀                 ▀▄
+  ▌               ▄            ▀▄
+▀█   █   █   █   ▀               ▌
+▀▌      ▀ ▀      ▀▀              ▐   ▄▄
+▐                                 ▌▄█ █
+▐                                 █ █▀
+▐                                 █▀
+▐                                 ▌
+ ▌                               ▐
+ ▐                               ▌
+  ▌                             ▐
+  ▐▄                           ▄▌
+    ▀▄▄▀▀▀▀▀▄▄▀▀▀▀▀▀▀▄▄▀▀▀▀▀▄▄▀
+EOT
+}
+pusheen_cat() {
+    /bin/cat \"\$@\" && pusheen
+}
+alias cat='pusheen_cat'
+
+
 alias ton='gsettings set org.gnome.settings-daemon.peripherals.touchpad touchpad-enabled true'
 alias toff='gsettings set org.gnome.settings-daemon.peripherals.touchpad touchpad-enabled false'
 
