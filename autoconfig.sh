@@ -18,12 +18,9 @@ imagemagick
 inkscape
 lamp-server^
 lftp
-mongodb
 nodejs
 npm
 pyrenamer
-python-dev
-python-pip
 python-virtualenv
 python3-dev
 sqlite3
@@ -111,6 +108,8 @@ virtualenv_cd() {
 alias cd='virtualenv_cd'
 
 
+
+
 pusheen() {
 cat<<\"EOT\"
 Mew
@@ -132,24 +131,21 @@ Mew
     ▀▄▄▀▀▀▀▀▄▄▀▀▀▀▀▀▀▄▄▀▀▀▀▀▄▄▀
 EOT
 }
-pusheen_cat() {
-    /bin/cat \"\$@\" && pusheen
-}
-alias cat='pusheen_cat'
 
 
-alias ton='gsettings set org.gnome.settings-daemon.peripherals.touchpad touchpad-enabled true'
-alias toff='gsettings set org.gnome.settings-daemon.peripherals.touchpad touchpad-enabled false'
 
 
 alias ls='ls -lh --color=auto'
 alias py='python3'
 
 
+
+
 alias s='git status'
 alias d='git diff'
 alias c='git checkout'
 " >> /home/$USER/.bashrc
+source ~/.bashrc
 
 
 # =========================================================================
