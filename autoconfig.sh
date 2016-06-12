@@ -252,7 +252,7 @@ echo '
     { "keys": ["ctrl+shift+tab"], "command": "prev_view" },
     { "keys": ["ctrl+f"], "command": "show_panel", "args": { "panel": "find", "in_selection": false } }
 ]
-' > '/home/$USER/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap'
+' > /home/$USER/.config/sublime-text-3/Packages/User/Default\ \(Linux\).sublime-keymap
 
 # Preferences => Settings - User
 echo '
