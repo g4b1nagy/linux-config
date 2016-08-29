@@ -9,22 +9,17 @@ packages="
 audacious
 audacity
 build-essential
-filezilla
-gconftool-2
 gimp
 git
 guake
 imagemagick
 inkscape
 lamp-server^
-lftp
 nodejs
 npm
-pyrenamer
 python-virtualenv
 python3-dev
 sqlite3
-tesseract-ocr
 vim
 virtualbox
 virtualbox-guest-additions-iso
@@ -39,49 +34,46 @@ sudo apt-get install $packages
 # =========================================================================
 
 gsettings set com.canonical.desktop.interface scrollbar-mode normal # display normal scrollbars instead of overlay
-gsettings set com.canonical.Unity.Lenses remote-content-search none # hide online search results from dash
 
 gsettings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ hsize 2 # enable workspaces
 
 gsettings set org.compiz.unityshell:/org/compiz/profiles/unity/plugins/unityshell/ disable-show-desktop true # hide 'Show desktop' icon from Alt-Tab
-gsettings set org.compiz.unityshell:/org/compiz/profiles/unity/plugins/unityshell/ edge-responsiveness 4 # launcher show sensitivity
 gsettings set org.compiz.unityshell:/org/compiz/profiles/unity/plugins/unityshell/ icon-size 32 # launcher icon size
 gsettings set org.compiz.unityshell:/org/compiz/profiles/unity/plugins/unityshell/ launcher-hide-mode 1 # auto hide launcher
+gsettings set org.compiz.unityshell:/org/compiz/profiles/unity/plugins/unityshell/ edge-responsiveness 4 # launcher show sensitivity
 
 gsettings set org.gnome.desktop.background color-shading-type solid
 gsettings set org.gnome.desktop.background picture-options 'none'
 gsettings set org.gnome.desktop.background picture-uri ''
 gsettings set org.gnome.desktop.background primary-color '#222'
 
-gsettings set org.gnome.desktop.interface document-font-name 'Sans 9'
-gsettings set org.gnome.desktop.interface font-name 'Ubuntu 9'
-gsettings set org.gnome.desktop.interface monospace-font-name 'Ubuntu Mono 11'
+# gsettings set org.gnome.desktop.interface document-font-name 'Sans 9'
+# gsettings set org.gnome.desktop.interface font-name 'Ubuntu 9'
+# gsettings set org.gnome.desktop.interface monospace-font-name 'Ubuntu Mono 11'
 
 gsettings set org.gnome.desktop.privacy remember-recent-files false
 gsettings set org.gnome.desktop.screensaver lock-enabled false
-gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Ubuntu Bold 9'
+# gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Ubuntu Bold 9'
 
-gsettings set org.gnome.gedit.preferences.editor editor-font 'Monospace 8'
+# gsettings set org.gnome.gedit.preferences.editor use-default-font false
+# gsettings set org.gnome.gedit.preferences.editor editor-font 'Monospace 8'
 gsettings set org.gnome.gedit.preferences.editor insert-spaces true
 gsettings set org.gnome.gedit.preferences.editor scheme oblivion
-gsettings set org.gnome.gedit.preferences.editor tabs-size 2
-gsettings set org.gnome.gedit.preferences.editor use-default-font false
+gsettings set org.gnome.gedit.preferences.editor tabs-size 4
 
 gsettings set org.gnome.gnome-screenshot auto-save-directory file:///home/$USER/Desktop/
 
-gsettings set org.gnome.nautilus.icon-view default-zoom-level small
-gsettings set org.gnome.nautilus.list-view default-zoom-level smallest
 gsettings set org.gnome.nautilus.preferences always-use-location-entry true
 gsettings set org.gnome.nautilus.preferences default-folder-viewer list-view
-gsettings set org.gnome.nautilus.preferences show-hidden-files false
+gsettings set org.gnome.nautilus.icon-view default-zoom-level small
+gsettings set org.gnome.nautilus.list-view default-zoom-level smallest
+# gsettings set org.gnome.nautilus.preferences show-hidden-files false
 
-gsettings set org.gnome.settings-daemon.peripherals.keyboard delay 250 # key press repeat delay
-gsettings set org.gnome.settings-daemon.peripherals.keyboard repeat-interval 20 # key press repeat interval
-gsettings set org.gnome.settings-daemon.peripherals.mouse motion-acceleration 6 # mouse speed
-gsettings set org.gnome.settings-daemon.peripherals.touchpad touchpad-enabled false
+gsettings set org.gnome.desktop.peripherals.keyboard delay 250 # key press repeat delay
+gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 20 # key press repeat interval
+gsettings set org.gnome.desktop.peripherals.mouse speed 0.5 # mouse speed
+gsettings set org.gnome.desktop.peripherals.touchpad send-events disabled # disable touchpad
 gsettings set org.gnome.settings-daemon.plugins.power lid-close-ac-action nothing
-
-gsettings set org.gtk.Settings.FileChooser show-hidden false
 
 
 # =========================================================================
@@ -108,37 +100,8 @@ virtualenv_cd() {
 alias cd='virtualenv_cd'
 
 
-
-
-pusheen() {
-cat<<\"EOT\"
-Mew
-  \\
-   ▐▀▄       ▄▀▌   ▄▄▄▄▄▄▄
-   ▌  ▀▄▄▄▄▄▀  ▐▄▀▀ ██ ██ ▀▀▄
-  ▐    ▀ ▀ ▀                 ▀▄
-  ▌               ▄            ▀▄
-▀█   █   █   █   ▀               ▌
-▀▌      ▀ ▀      ▀▀              ▐   ▄▄
-▐                                 ▌▄█ █
-▐                                 █ █▀
-▐                                 █▀
-▐                                 ▌
- ▌                               ▐
- ▐                               ▌
-  ▌                             ▐
-  ▐▄                           ▄▌
-    ▀▄▄▀▀▀▀▀▄▄▀▀▀▀▀▀▀▄▄▀▀▀▀▀▄▄▀
-EOT
-}
-
-
-
-
 alias ls='ls -lh --color=auto'
 alias py='python3'
-
-
 
 
 alias s='git status'
@@ -181,13 +144,7 @@ git config --global color.ui true
 
 mkdir -p /home/$USER/.ssh/
 echo "
-Host 188.166.33.15
-    ForwardAgent yes
-
-Host 188.166.70.97
-    ForwardAgent yes
-
-Host 91.209.189.229
+Host example.com
     ForwardAgent yes
 " >> /home/$USER/.ssh/config
 
@@ -203,6 +160,8 @@ sudo chmod 755 -R -R /var/www/html/
 # =========================================================================
 # Others
 # =========================================================================
+
+sudo locale-gen ro_RO.UTF-8
 
 echo "
 .headers on
@@ -223,12 +182,10 @@ Comment[en_US]=
 Comment=
 " > /home/$USER/.config/autostart/guake.desktop
 
-gconftool-2 --set /apps/guake/keybindings/global/show_hide "<Control>space" -t string
-gconftool-2 --set /apps/guake/keybindings/local/new_tab "<Primary><Shift>n" -t string
-gconftool-2 --set /apps/guake/keybindings/local/next_tab "<Primary><Shift>Right" -t string
-gconftool-2 --set /apps/guake/keybindings/local/previous_tab "<Primary><Shift>Left" -t string
-
-sudo locale-gen ro_RO.UTF-8
+gconftool --set /apps/guake/keybindings/global/show_hide "<Control>space" -t string
+gconftool --set /apps/guake/keybindings/local/new_tab "<Primary><Shift>n" -t string
+gconftool --set /apps/guake/keybindings/local/next_tab "<Primary><Shift>Right" -t string
+gconftool --set /apps/guake/keybindings/local/previous_tab "<Primary><Shift>Left" -t string
 
 
 # =========================================================================
@@ -261,7 +218,7 @@ echo '
     "auto_complete": false,
     "enable_tab_scrolling": false,
     "ensure_newline_at_eof_on_save": true,
-    "font_size": 9,
+    "font_size": 17,
     "spell_check": false,
     "tab_completion": false,
     "tab_size": 4,
