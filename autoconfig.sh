@@ -216,14 +216,17 @@ echo '
 {
     "auto_close_tags": false,
     "auto_complete": false,
+    "color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
     "enable_tab_scrolling": false,
     "ensure_newline_at_eof_on_save": true,
-    "font_size": 17,
+    "font_size": 13,
     "spell_check": false,
     "tab_completion": false,
     "tab_size": 4,
+    "theme": "Adaptive.sublime-theme",
     "translate_tabs_to_spaces": true,
     "trim_trailing_white_space_on_save": true,
-    "word_wrap": true
+    "word_wrap": true,
+    "show_definitions": false
 }
 ' > /home/$USER/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
