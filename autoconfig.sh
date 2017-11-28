@@ -187,6 +187,9 @@ gconftool --set /apps/guake/keybindings/local/new_tab "<Primary><Shift>n" -t str
 gconftool --set /apps/guake/keybindings/local/next_tab "<Primary><Shift>Right" -t string
 gconftool --set /apps/guake/keybindings/local/previous_tab "<Primary><Shift>Left" -t string
 
+# /etc/fstab
+UUID=75111ba3-9475-4403-b30f-3988cbd2caae   /media/saved    ext4    defaults    0   2
+
 
 # =========================================================================
 # Sublime Text 3
@@ -203,7 +206,7 @@ text/x-java=sublime_text.desktop
 text/mathml=sublime_text.desktop
 text/x-python=sublime_text.desktop
 text/x-sql=sublime_text.desktop
-' >> /home/gabi/.local/share/applications/mimeapps.list
+' >> /home/$USER/.local/share/applications/mimeapps.list
 
 mkdir -p /home/$USER/.config/sublime-text-3/Packages/User/
 
