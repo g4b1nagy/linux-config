@@ -188,7 +188,8 @@ gconftool --set /apps/guake/keybindings/local/next_tab "<Primary><Shift>Right" -
 gconftool --set /apps/guake/keybindings/local/previous_tab "<Primary><Shift>Left" -t string
 
 # /etc/fstab
-UUID=75111ba3-9475-4403-b30f-3988cbd2caae   /media/saved    ext4    defaults    0   2
+sudo blkid
+UUID={{ UUID }}    /media/saved    ext4    defaults    0    2
 
 
 # =========================================================================
