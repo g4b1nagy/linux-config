@@ -154,7 +154,7 @@ Host example.com
 # =========================================================================
 
 sudo chown gabi:gabi -R /var/www/html/
-sudo chmod 755 -R -R /var/www/html/
+sudo chmod 755 -R /var/www/html/
 
 
 # =========================================================================
