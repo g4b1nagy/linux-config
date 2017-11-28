@@ -192,6 +192,19 @@ gconftool --set /apps/guake/keybindings/local/previous_tab "<Primary><Shift>Left
 # Sublime Text 3
 # =========================================================================
 
+# make Sublime the default application for text files
+echo '
+application/x-perl=sublime_text.desktop
+text/plain=sublime_text.desktop
+text/x-chdr=sublime_text.desktop
+text/x-csrc=sublime_text.desktop
+text/x-dtd=sublime_text.desktop
+text/x-java=sublime_text.desktop
+text/mathml=sublime_text.desktop
+text/x-python=sublime_text.desktop
+text/x-sql=sublime_text.desktop
+' >> /home/gabi/.local/share/applications/mimeapps.list
+
 mkdir -p /home/$USER/.config/sublime-text-3/Packages/User/
 
 echo '
