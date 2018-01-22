@@ -119,8 +119,9 @@ mkdir -p /home/$USER/.vim/colors/
 wget -P /home/$USER/.vim/colors/ https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim
 
 echo "
-set tabstop=4
 set expandtab
+set tabstop=4
+set shiftwidth=4
 syntax on
 colorscheme molokai
 set t_Co=256
