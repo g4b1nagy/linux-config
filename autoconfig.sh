@@ -194,6 +194,21 @@ UUID={{ UUID }}    /media/saved    ext4    defaults    0    2
 
 
 # =========================================================================
+# Bash show Git branch
+# =========================================================================
+
+# add this to your ~/.bashrc file
+get_git_branch() {
+    git branch 2>/dev/null | grep '*' | tr -d '* ' | sed 's/^/ (/' | sed 's/$/) /';
+}
+
+PS1="${debian_chroot:+($debian_chroot)}\u@\h:\w\$ "                                  # default
+PS1="${debian_chroot:+($debian_chroot)}\u@\h:\w\$(get_git_branch)\$ "                # show branch
+PS1="${debian_chroot:+($debian_chroot)}\u@\h:\w\e[32m\$(get_git_branch)\e[39m\$ "    # show branch, colored
+PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+
+
+# =========================================================================
 # Sublime Text 3
 # =========================================================================
 
