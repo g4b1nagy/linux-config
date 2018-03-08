@@ -88,16 +88,19 @@ echo "
 # $USER's stuff
 # =========================================================================
 
-check_virtualenv() {
-    if [ -e venv ]
+function cd {
+    builtin cd "$@"
+
+    if [ -d venv ]
     then
         source venv/bin/activate
     fi
+
+    if [ -f "Pipfile" ]
+    then
+        pipenv shell
+    fi
 }
-virtualenv_cd() {
-    builtin cd \"\$@\" && check_virtualenv
-}
-alias cd='virtualenv_cd'
 
 
 alias ls='ls -lh --color=auto'
