@@ -108,7 +108,7 @@ alias py='python3'
 
 
 alias s='git status'
-alias d='git diff'
+alias d='git diff --minimal'
 alias c='git checkout'
 " >> /home/$USER/.bashrc
 source ~/.bashrc
