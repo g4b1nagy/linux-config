@@ -45,9 +45,9 @@ sudo apt-get install $packages
 
 xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/dpms-enabled -n -t bool -s false    # Display power management => Disable
 
-xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/lid-action-on-ac -n -t int -s 3                 # When laptop lid is closed => Lock screen
-xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/lid-action-on-battery -n -t int -s 3            # When laptop lid is closed => Lock screen
-xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/logind-handle-lid-switch -n -t bool -s false    # When laptop lid is closed => Lock screen
+xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/lid-action-on-ac -n -t int -s 0                 # When laptop lid is closed => Switch off display
+xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/lid-action-on-battery -n -t int -s 0            # When laptop lid is closed => Switch off display
+xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/logind-handle-lid-switch -n -t bool -s false    # When laptop lid is closed => Switch off display
 
 xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/brightness-on-ac -n -t int -s 9         # Display => Brightness reduction => Never
 xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/brightness-on-battery -n -t int -s 9    # Display => Brightness reduction => Never
