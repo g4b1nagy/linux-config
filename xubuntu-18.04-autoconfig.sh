@@ -200,6 +200,7 @@ echo '
     "ensure_newline_at_eof_on_save": true,
     "font_size": 10,
     "mini_diff": false,
+    "mini_diff": false,
     "show_definitions": false,
     "show_git_status": false,
     "spell_check": false,
