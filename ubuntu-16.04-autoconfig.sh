@@ -138,7 +138,7 @@ sudo update-alternatives --config editor
 # =========================================================================
 
 git config --global user.name "Gabi Nagy"
-git config --global user.email gabrian.nagy@gmail.com
+git config --global user.email ???????
 git config --global color.ui true
 
 
