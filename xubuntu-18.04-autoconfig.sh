@@ -90,15 +90,9 @@ echo "
 
 function cd {
     builtin cd \"\$@\"
-
     if [ -d venv ]
     then
         source venv/bin/activate
-    fi
-
-    if [ -f 'Pipfile' ]
-    then
-        pipenv shell
     fi
 }
 
