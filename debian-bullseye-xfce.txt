@@ -335,26 +335,30 @@ show_mouse=0
 " > /home/$USER/.config/xfce4/xfce4-screenshooter
 
 # =========================================================================
-# Fix /home/$USER/.config/mimeapps.list (/usr/share/applications/mimeinfo.cache)
+# Fix /home/$USER/.config/mimeapps.list
 # =========================================================================
 
 echo "[Default Applications]
 " > /home/$USER/.config/mimeapps.list
+
 
 cat /usr/share/applications/mimeinfo.cache | grep 'vim.desktop' | cut -d'=' -f 1 | while read -r mime;
 do
     echo "$mime=sublime_text.desktop;"
 done >> /home/$USER/.config/mimeapps.list
 
-echo "
-text/html=google-chrome.desktop;
-text/xml=google-chrome.desktop;
-" >> /home/$USER/.config/mimeapps.list
+
+cat /usr/share/applications/mimeinfo.cache | grep -E 'text/html|text/xml' | cut -d'=' -f 1 | while read -r mime;
+do
+    echo "$mime=google-chrome.desktop;"
+done >> /home/$USER/.config/mimeapps.list
+
 
 cat /usr/share/applications/mimeinfo.cache | grep 'display-im6.q16.desktop' | cut -d'=' -f 1 | while read -r mime;
 do
     echo "$mime=viewnior.desktop;"
 done >> /home/$USER/.config/mimeapps.list
+
 
 cat /usr/share/applications/mimeinfo.cache | grep -E 'QuodLibet|Parole' | cut -d'=' -f 1 | while read -r mime;
 do
