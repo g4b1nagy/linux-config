@@ -44,6 +44,7 @@ sudo apt-get update
 
 packages="
 dconf-cli
+filezilla
 gimp
 git
 guake
@@ -332,3 +333,30 @@ delay=0
 region=1
 show_mouse=0
 " > /home/$USER/.config/xfce4/xfce4-screenshooter
+
+# =========================================================================
+# Fix /home/$USER/.config/mimeapps.list (/usr/share/applications/mimeinfo.cache)
+# =========================================================================
+
+echo "[Default Applications]
+" > /home/$USER/.config/mimeapps.list
+
+cat /usr/share/applications/mimeinfo.cache | grep 'vim.desktop' | cut -d'=' -f 1 | while read -r mime;
+do
+    echo "$mime=sublime_text.desktop;"
+done >> /home/$USER/.config/mimeapps.list
+
+echo "
+text/html=google-chrome.desktop;
+text/xml=google-chrome.desktop;
+" >> /home/$USER/.config/mimeapps.list
+
+cat /usr/share/applications/mimeinfo.cache | grep 'display-im6.q16.desktop' | cut -d'=' -f 1 | while read -r mime;
+do
+    echo "$mime=viewnior.desktop;"
+done >> /home/$USER/.config/mimeapps.list
+
+cat /usr/share/applications/mimeinfo.cache | grep -E 'QuodLibet|Parole' | cut -d'=' -f 1 | while read -r mime;
+do
+    echo "$mime=vlc.desktop;"
+done >> /home/$USER/.config/mimeapps.list
