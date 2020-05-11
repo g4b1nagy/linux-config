@@ -153,8 +153,7 @@ mkdir -p /home/$USER/.config/sublime-text-3/Packages/User/
 echo '[
     {"command": "expand_selection", "args": {"to": "line"}},
     {"command": "left_delete"}
-]
-' > /home/$USER/.config/sublime-text-3/Packages/User/DeleteLine.sublime-macro
+]' > /home/$USER/.config/sublime-text-3/Packages/User/DeleteLine.sublime-macro
 
 # Preferences => Key Bindings - User
 echo '[
@@ -162,8 +161,7 @@ echo '[
     { "keys": ["ctrl+tab"], "command": "next_view" },
     { "keys": ["ctrl+shift+tab"], "command": "prev_view" },
     { "keys": ["ctrl+f"], "command": "show_panel", "args": { "panel": "find", "in_selection": false } }
-]
-' > /home/$USER/.config/sublime-text-3/Packages/User/Default\ \(Linux\).sublime-keymap
+]' > /home/$USER/.config/sublime-text-3/Packages/User/Default\ \(Linux\).sublime-keymap
 
 # Preferences => Settings - User
 echo '{
@@ -184,8 +182,7 @@ echo '{
     "translate_tabs_to_spaces": true,
     "trim_trailing_white_space_on_save": true,
     "word_wrap": true
-}
-' > /home/$USER/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
+}' > /home/$USER/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
 
 # =========================================================================
 # Configure Vim
@@ -199,8 +196,7 @@ set expandtab
 set shiftwidth=4
 set t_Co=256
 set tabstop=4
-syntax on
-" > /home/$USER/.vimrc
+syntax on" > /home/$USER/.vimrc
 
 sudo update-alternatives --config editor
 
@@ -331,8 +327,7 @@ screenshot_dir=file:/home/$USER/Desktop
 action=1
 delay=0
 region=1
-show_mouse=0
-" > /home/$USER/.config/xfce4/xfce4-screenshooter
+show_mouse=0" > /home/$USER/.config/xfce4/xfce4-screenshooter
 
 # =========================================================================
 # xarchiver
@@ -366,15 +361,13 @@ updadd=false
 freshen=false
 recurse=true
 solid_archive=false
-remove_files=false
-" > /home/$USER/.config/xarchiver/xarchiverrc
+remove_files=false" > /home/$USER/.config/xarchiver/xarchiverrc
 
 # =========================================================================
 # Fix /home/$USER/.config/mimeapps.list
 # =========================================================================
 
-echo "[Default Applications]
-" > /home/$USER/.config/mimeapps.list
+echo "[Default Applications]" > /home/$USER/.config/mimeapps.list
 
 
 cat /usr/share/applications/mimeinfo.cache | grep 'vim.desktop' | cut -d'=' -f 1 | while read -r mime;
