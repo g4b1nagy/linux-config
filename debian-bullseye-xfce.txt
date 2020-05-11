@@ -292,10 +292,10 @@ do
 done
 
 
-# Desktop color: #222
+# Desktop color
 xfconf-query -c xfce4-desktop -l -v | grep rgba1 | cut -d' ' -f 1 | while read -r property;
 do
-    xfconf-query -c xfce4-desktop -p $property -t double -t double -t double -t double -s "0.133" -s "0.133" -s "0.133" -s "1.0"
+    xfconf-query -c xfce4-desktop -p $property -t double -t double -t double -t double -s "0.180392" -s "0.203922" -s "0.211765" -s "1.0"
 done
 
 # =========================================================================
