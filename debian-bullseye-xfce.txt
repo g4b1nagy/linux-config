@@ -54,6 +54,7 @@ postgresql
 python3-virtualenv
 redis-server
 redis-tools
+viewnior
 vim
 vlc
 "
