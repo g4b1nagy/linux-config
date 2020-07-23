@@ -16,8 +16,8 @@ usermod -aG sudo $username
 # Install WiFi driver (https://wiki.debian.org/iwlwifi)
 # =========================================================================
 
-wget http://ftp.debian.org/debian/pool/non-free/f/firmware-nonfree/firmware-iwlwifi_20190717-2_all.deb
-sudo dpkg -i firmware-iwlwifi_20190717-2_all.deb
+wget http://ftp.debian.org/debian/pool/non-free/f/firmware-nonfree/firmware-iwlwifi_20200421-1_all.deb
+sudo dpkg -i firmware-iwlwifi_20200421-1_all.deb
 sudo modprobe -r iwlwifi
 sudo modprobe iwlwifi
 
@@ -43,6 +43,7 @@ sudo apt-get update
 # =========================================================================
 
 packages="
+chromium
 dconf-cli
 filezilla
 gimp
@@ -63,7 +64,6 @@ vlc
 sudo apt-get install $packages
 
 # + https://www.sublimetext.com/docs/3/linux_repositories.html
-# + https://www.google.com/chrome/
 
 # =========================================================================
 # Configure Bash
