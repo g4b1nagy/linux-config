@@ -59,6 +59,10 @@ redis-tools
 viewnior
 vim
 vlc
+
+gvfs-backends
+gvfs-fuse
+mtp-tools
 "
 
 sudo apt-get install $packages
@@ -377,7 +381,7 @@ done >> /home/$USER/.config/mimeapps.list
 
 cat /usr/share/applications/mimeinfo.cache | grep -E 'text/html|text/xml' | cut -d'=' -f 1 | while read -r mime;
 do
-    echo "$mime=google-chrome.desktop;"
+    echo "$mime=chromium.desktop;"
 done >> /home/$USER/.config/mimeapps.list
 
 
