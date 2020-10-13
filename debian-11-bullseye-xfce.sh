@@ -90,6 +90,7 @@ function cd {
 }
 
 alias ls='ls -lh --color=auto'
+alias grep='grep --color=auto'
 alias py='python3'
 
 alias s='git status'
@@ -268,6 +269,8 @@ xfconf-query -c xfce4-session -p /general/SaveOnExit -n -t bool -s "false"
 # Keyboard
 xfconf-query -c keyboards -p /Default/KeyRepeat/Delay -n -t int -s "250"
 xfconf-query -c keyboards -p /Default/KeyRepeat/Rate -n -t int -s "50"
+xfconf-query -c xfce4-keyboard-shortcuts -p "/commands/custom/Print" -n -t string -s "xfce4-screenshooter -f -s /home/$USER/Desktop/"
+xfconf-query -c xfce4-keyboard-shortcuts -p "/commands/custom/<Primary>Print" -n -t string -s "xfce4-screenshooter"
 
 
 # Mouse
