@@ -133,9 +133,15 @@ window-width=100
 show-hide='<Primary>space'
 
 [keybindings/local]
+decrease-height='disabled'
+decrease-transparency='disabled'
+increase-height='disabled'
+increase-transparency='disabled'
 new-tab='<Primary><Shift>n'
+new-tab-home='disabled'
 next-tab='<Primary><Shift>Right'
 previous-tab='<Primary><Shift>Left'
+toggle-transparency='disabled'
 
 [style/background]
 transparency=100
