@@ -203,6 +203,7 @@ wget -P /home/$USER/.vim/colors/ https://raw.githubusercontent.com/tomasr/moloka
 
 echo "colorscheme molokai
 set expandtab
+set mouse-=a
 set shiftwidth=4
 set t_Co=256
 set tabstop=4
