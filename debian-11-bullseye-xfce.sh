@@ -178,6 +178,7 @@ echo '[
 echo '{
     "auto_close_tags": false,
     "auto_complete": false,
+    "caret_style": "smooth",
     "color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
     "enable_tab_scrolling": false,
     "ensure_newline_at_eof_on_save": true,
