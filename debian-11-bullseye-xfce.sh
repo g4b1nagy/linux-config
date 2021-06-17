@@ -191,7 +191,8 @@ echo '{
     "tab_size": 4,
     "theme": "Adaptive.sublime-theme",
     "translate_tabs_to_spaces": true,
-    "trim_trailing_white_space_on_save": true,
+    "trim_trailing_white_space_on_save": "all",
+    "trim_only_modified_white_space": false,
     "word_wrap": true
 }' > /home/$USER/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
 
