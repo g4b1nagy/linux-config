@@ -412,6 +412,12 @@ do
 done >> /home/$USER/.config/mimeapps.list
 
 
+cat /usr/share/applications/mimeinfo.cache | grep 'image/pdf' | cut -d'=' -f 1 | while read -r mime;
+do
+    echo "$mime=atril.desktop;"
+done >> /home/$USER/.config/mimeapps.list
+
+
 cat /usr/share/applications/mimeinfo.cache | grep -E 'QuodLibet|Parole' | cut -d'=' -f 1 | while read -r mime;
 do
     echo "$mime=vlc.desktop;"
