@@ -16,7 +16,7 @@ usermod -aG sudo $username
 # Install WiFi driver (https://wiki.debian.org/iwlwifi)
 # =========================================================================
 
-wget http://ftp.debian.org/debian/pool/non-free/f/firmware-nonfree/firmware-iwlwifi_20200421-1_all.deb
+wget http://ftp.debian.org/debian/pool/non-free/f/firmware-nonfree/firmware-iwlwifi_20210315-3_all.deb
 sudo dpkg -i firmware-iwlwifi_20200421-1_all.deb
 sudo modprobe -r iwlwifi
 sudo modprobe iwlwifi
@@ -33,10 +33,11 @@ deb-src http://security.debian.org/debian-security bullseye-security main contri
 deb http://deb.debian.org/debian bullseye main
 deb-src http://deb.debian.org/debian bullseye main
 
-deb http://deb.debian.org/debian bullseye-updates main
-deb-src http://deb.debian.org/debian bullseye-updates main" | sudo tee /etc/apt/sources.list > /dev/null
+deb http://deb.debian.org/debian/ bullseye-updates main contrib
+deb-src http://deb.debian.org/debian/ bullseye-updates main contrib" | sudo tee /etc/apt/sources.list > /dev/null
 
-sudo apt-get update
+sudo apt update
+sudo apt upgrade
 
 # =========================================================================
 # Install packages
@@ -53,7 +54,6 @@ imagemagick
 inkscape
 nginx
 postgresql
-python3-virtualenv
 redis-server
 redis-tools
 viewnior
@@ -65,9 +65,9 @@ gvfs-fuse
 mtp-tools
 "
 
-sudo apt-get install $packages
+sudo apt install $packages
 
-# + https://www.sublimetext.com/docs/3/linux_repositories.html
+# + https://www.sublimetext.com/docs/linux_repositories.html
 
 # =========================================================================
 # Configure Bash
@@ -164,7 +164,7 @@ mkdir -p /home/$USER/.config/sublime-text-3/Packages/User/
 echo '[
     {"command": "expand_selection", "args": {"to": "line"}},
     {"command": "left_delete"}
-]' > /home/$USER/.config/sublime-text-3/Packages/User/DeleteLine.sublime-macro
+]' > /home/$USER/.config/sublime-text/Packages/User/DeleteLine.sublime-macro
 
 # Preferences => Key Bindings - User
 echo '[
@@ -172,14 +172,14 @@ echo '[
     { "keys": ["ctrl+tab"], "command": "next_view" },
     { "keys": ["ctrl+shift+tab"], "command": "prev_view" },
     { "keys": ["ctrl+f"], "command": "show_panel", "args": { "panel": "find", "in_selection": false } }
-]' > /home/$USER/.config/sublime-text-3/Packages/User/Default\ \(Linux\).sublime-keymap
+]' > /home/$USER/.config/sublime-text/Packages/User/Default\ \(Linux\).sublime-keymap
 
 # Preferences => Settings - User
 echo '{
     "auto_close_tags": false,
     "auto_complete": false,
     "caret_style": "smooth",
-    "color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
+    "color_scheme": "Monokai.sublime-color-scheme",
     "enable_tab_scrolling": false,
     "ensure_newline_at_eof_on_save": true,
     "font_size": 10,
@@ -191,10 +191,9 @@ echo '{
     "tab_size": 4,
     "theme": "Adaptive.sublime-theme",
     "translate_tabs_to_spaces": true,
-    "trim_trailing_white_space_on_save": "all",
     "trim_only_modified_white_space": false,
-    "word_wrap": true
-}' > /home/$USER/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
+    "trim_trailing_white_space_on_save": "all",
+}' > /home/$USER/.config/sublime-text/Packages/User/Preferences.sublime-settings
 
 # =========================================================================
 # Configure Vim
@@ -232,6 +231,12 @@ sudo systemctl restart nginx
 git config --global user.name "$full_name"
 git config --global user.email "$email"
 git config --global color.ui true
+
+# =========================================================================
+# Set timezone
+# =========================================================================
+
+sudo timedatectl set-timezone Europe/Bucharest
 
 # =========================================================================
 # Set first day of week to Monday (https://wiki.debian.org/Locale)
