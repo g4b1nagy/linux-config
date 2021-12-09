@@ -297,7 +297,7 @@ xfconf-query -c pointers -p /Logitech_Wireless_Mouse/Acceleration -n -t double -
 
 # Desktop icons
 xfconf-query -c xfce4-desktop -p /desktop-icons/file-icons/show-filesystem -n -t bool -s "false"
-xfconf-query -c xfce4-desktop -p /desktop-icons/file-icons/show-home -n -t bool -s "false"
+xfconf-query -c xfce4-desktop -p /desktop-icons/file-icons/show-home -n -t bool -s "true"
 
 
 # Desktop image-style: None
