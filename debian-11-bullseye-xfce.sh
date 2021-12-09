@@ -264,6 +264,10 @@ xfconf-query -c xfce4-panel -p $clock_plugin/digital-format -n -t string -s "%H:
 xfconf-query -c thunar -p /default-view -n -t string -s "ThunarCompactView"
 
 
+# thunar => Close window with multiple tabs? => Do not ask me again
+xfconf-query -c thunar -p /misc-confirm-close-multiple-tabs -n -t bool -s "false"
+
+
 # Workspace Switcher => Number of workspaces: 2
 xfconf-query -c xfwm4 -p /general/workspace_count -n -t int -s "2"
 
