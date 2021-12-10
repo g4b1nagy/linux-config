@@ -255,6 +255,9 @@ LC_TIME="en_GB.UTF-8"
 # XFCE settings
 # =========================================================================
 
+# Power Manager => Show label: Percentage
+xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/show-panel-label -n -t int -s "1"
+
 # Clock => Format: %H:%M
 clock_plugin=$(xfconf-query -c xfce4-panel -p /plugins -l -v | grep clock | cut -d' ' -f 1)
 xfconf-query -c xfce4-panel -p $clock_plugin/digital-format -n -t string -s "%H:%M"
