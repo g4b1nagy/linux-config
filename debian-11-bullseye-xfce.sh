@@ -44,6 +44,7 @@ sudo apt upgrade
 # =========================================================================
 
 packages="
+blueman
 chromium
 dconf-cli
 filezilla
