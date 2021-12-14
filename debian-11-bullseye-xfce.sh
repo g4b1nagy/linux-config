@@ -99,6 +99,10 @@ alias d='git diff --minimal'
 alias c='git checkout'
 " >> /home/$USER/.bashrc
 
+echo "
+set enable-bracketed-paste off
+" >> /home/$USER/.inputrc
+
 # =========================================================================
 # Configure Guake
 # =========================================================================
