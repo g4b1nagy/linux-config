@@ -53,6 +53,7 @@ git
 guake
 imagemagick
 inkscape
+ncal
 nginx
 postgresql
 redis-server
