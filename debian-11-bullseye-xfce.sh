@@ -13,13 +13,20 @@ email="john@doe.com"
 usermod -aG sudo $username
 
 # =========================================================================
-# Install WiFi driver (https://wiki.debian.org/iwlwifi)
+# Install WiFi firmware (https://wiki.debian.org/iwlwifi)
 # =========================================================================
 
 wget http://ftp.debian.org/debian/pool/non-free/f/firmware-nonfree/firmware-iwlwifi_20210315-3_all.deb
 sudo dpkg -i firmware-iwlwifi_20200421-1_all.deb
 sudo modprobe -r iwlwifi
 sudo modprobe iwlwifi
+
+# =========================================================================
+# Install audio firmware (https://packages.debian.org/bullseye/firmware-sof-signed)
+# =========================================================================
+
+wget http://ftp.debian.org/debian/pool/non-free/f/firmware-sof/firmware-sof-signed_1.7-1_all.deb
+sudo dpkg -i firmware-sof-signed_1.7-1_all.deb
 
 # =========================================================================
 # Fix /etc/apt/sources.list (https://wiki.debian.org/SourcesList)
