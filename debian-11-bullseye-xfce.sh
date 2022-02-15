@@ -172,7 +172,7 @@ cp /usr/share/applications/guake.desktop /home/$USER/.config/autostart/
 # Configure Sublime Text
 # =========================================================================
 
-mkdir -p /home/$USER/.config/sublime-text-3/Packages/User/
+mkdir -p /home/$USER/.config/sublime-text/Packages/User/
 
 echo '[
     {"command": "expand_selection", "args": {"to": "line"}},
@@ -243,6 +243,7 @@ sudo systemctl restart nginx
 
 git config --global user.name "$full_name"
 git config --global user.email "$email"
+git config --global pull.rebase true
 git config --global color.ui true
 
 # =========================================================================
