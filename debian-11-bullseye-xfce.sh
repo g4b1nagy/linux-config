@@ -105,6 +105,9 @@ alias py='python3'
 alias s='git status'
 alias d='git diff --minimal'
 alias c='git checkout'
+
+alias doff='xrandr --output eDP-1 --off'
+alias don='xrandr --output eDP-1 --auto'
 " >> /home/$USER/.bashrc
 
 echo "
