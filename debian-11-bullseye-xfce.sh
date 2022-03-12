@@ -22,26 +22,19 @@ sudo modprobe -r iwlwifi
 sudo modprobe iwlwifi
 
 # =========================================================================
-# Install audio firmware (https://packages.debian.org/bullseye/firmware-sof-signed)
-# =========================================================================
-
-wget http://ftp.debian.org/debian/pool/non-free/f/firmware-sof/firmware-sof-signed_1.7-1_all.deb
-sudo dpkg -i firmware-sof-signed_1.7-1_all.deb
-
-# =========================================================================
 # Fix /etc/apt/sources.list (https://wiki.debian.org/SourcesList)
 # =========================================================================
 
 sudo cp /etc/apt/sources.list /etc/apt/sources.list_backup
 
-echo "deb http://security.debian.org/debian-security bullseye-security main contrib
-deb-src http://security.debian.org/debian-security bullseye-security main contrib
+echo "deb http://security.debian.org/debian-security bullseye-security main contrib non-free
+deb-src http://security.debian.org/debian-security bullseye-security main contrib non-free
 
-deb http://deb.debian.org/debian bullseye main
-deb-src http://deb.debian.org/debian bullseye main
+deb http://deb.debian.org/debian bullseye main non-free
+deb-src http://deb.debian.org/debian bullseye main non-free
 
-deb http://deb.debian.org/debian/ bullseye-updates main contrib
-deb-src http://deb.debian.org/debian/ bullseye-updates main contrib" | sudo tee /etc/apt/sources.list > /dev/null
+deb http://deb.debian.org/debian/ bullseye-updates main contrib non-free
+deb-src http://deb.debian.org/debian/ bullseye-updates main contrib non-free" | sudo tee /etc/apt/sources.list > /dev/null
 
 sudo apt update
 sudo apt upgrade
@@ -72,6 +65,10 @@ vlc
 gvfs-backends
 gvfs-fuse
 mtp-tools
+
+firmware-iwlwifi
+firmware-linux
+firmware-sof-signed
 "
 
 sudo apt install $packages
@@ -317,28 +314,6 @@ xfconf-query -c pointers -p /Logitech_Wireless_Mouse/Acceleration -n -t double -
 
 # Desktop icons
 xfconf-query -c xfce4-desktop -p /desktop-icons/file-icons/show-filesystem -n -t bool -s "false"
-xfconf-query -c xfce4-desktop -p /desktop-icons/file-icons/show-home -n -t bool -s "true"
-
-
-# Desktop image-style: None
-xfconf-query -c xfce4-desktop -l -v | grep image-style | cut -d' ' -f 1 | while read -r property;
-do
-    xfconf-query -c xfce4-desktop -p $property -t int -s "0";
-done
-
-
-# Desktop color-style: Solid color
-xfconf-query -c xfce4-desktop -l -v | grep color-style | cut -d' ' -f 1 | while read -r property;
-do
-    xfconf-query -c xfce4-desktop -p $property -t int -s "0";
-done
-
-
-# Desktop color
-xfconf-query -c xfce4-desktop -l -v | grep rgba1 | cut -d' ' -f 1 | while read -r property;
-do
-    xfconf-query -c xfce4-desktop -p $property -t double -t double -t double -t double -s "0.180392" -s "0.203922" -s "0.211765" -s "1.0"
-done
 
 # =========================================================================
 # XFCE theme (https://github.com/vinceliuice/Matcha-gtk-theme)
@@ -380,7 +355,7 @@ show_mouse=0" > /home/$USER/.config/xfce4/xfce4-screenshooter
 mkdir -p /home/$USER/.config/xarchiver/
 
 echo "[xarchiver]
-preferred_format=17
+preferred_format=11
 prefer_unzip=true
 confirm_deletion=true
 sort_filename_content=false
