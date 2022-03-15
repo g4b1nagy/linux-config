@@ -245,6 +245,7 @@ git config --global user.name "$full_name"
 git config --global user.email "$email"
 git config --global pull.rebase true
 git config --global color.ui true
+git config --global init.defaultBranch master
 
 # =========================================================================
 # Set timezone
