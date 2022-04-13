@@ -212,6 +212,10 @@ echo '{
 wget https://codeload.github.com/jwortmann/ini-syntax/tar.gz/refs/tags/v1.4.3
 tar -xzvf v1.4.3 --directory /home/$USER/.config/sublime-text/Packages/
 
+# Add .toml file syntax highlighting
+wget https://github.com/jasonwilliams/sublime_toml_highlighting/archive/refs/tags/v2.5.0.tar.gz
+tar -xzvf v2.5.0.tar.gz --directory /home/$USER/.config/sublime-text/Packages/
+
 # =========================================================================
 # Configure Vim
 # =========================================================================
