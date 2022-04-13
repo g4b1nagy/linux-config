@@ -208,6 +208,10 @@ echo '{
     "trim_trailing_white_space_on_save": "all",
 }' > /home/$USER/.config/sublime-text/Packages/User/Preferences.sublime-settings
 
+# Add .ini file syntax highlighting
+wget https://codeload.github.com/jwortmann/ini-syntax/tar.gz/refs/tags/v1.4.3
+tar -xzvf v1.4.3 --directory /home/$USER/.config/sublime-text/Packages/
+
 # =========================================================================
 # Configure Vim
 # =========================================================================
