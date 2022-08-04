@@ -25,7 +25,7 @@ sudo modprobe iwlwifi
 # Fix /etc/apt/sources.list (https://wiki.debian.org/SourcesList)
 # =========================================================================
 
-sudo cp /etc/apt/sources.list /etc/apt/sources.list_backup
+sudo cp /etc/apt/sources.list /etc/apt/sources.list_backup_$(date +%F_%T)
 
 echo "deb http://security.debian.org/debian-security bullseye-security main contrib non-free
 deb-src http://security.debian.org/debian-security bullseye-security main contrib non-free
@@ -79,7 +79,7 @@ sudo apt install $packages
 # Configure Bash
 # =========================================================================
 
-cp /home/$USER/.bashrc /home/$USER/.bashrc_backup
+cp /home/$USER/.bashrc /home/$USER/.bashrc_backup_$(date +%F_%T)
 
 echo "
 
@@ -241,7 +241,7 @@ sudo chown $USER:$USER -R /var/www/html/
 sudo chmod 755 -R /var/www/html/
 
 mv /var/www/html/index.nginx-debian.html /var/www/html/backup_index.nginx-debian.html
-sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default_backup
+sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default_backup_$(date +%F_%T)
 sudo sed -i '/^\tlocation \/ {/s/{/{\n\t\tautoindex on;/' /etc/nginx/sites-available/default
 sudo systemctl restart nginx
 
@@ -265,11 +265,11 @@ sudo timedatectl set-timezone Europe/Bucharest
 # Set first day of week to Monday (https://wiki.debian.org/Locale)
 # =========================================================================
 
-sudo cp /etc/locale.gen /etc/locale.gen_backup
+sudo cp /etc/locale.gen /etc/locale.gen_backup_$(date +%F_%T)
 sudo sed -i '/^# en_GB\.UTF-8/s/^# //' /etc/locale.gen
 sudo locale-gen
 
-sudo cp /etc/default/locale /etc/default/locale_backup
+sudo cp /etc/default/locale /etc/default/locale_backup_$(date +%F_%T)
 echo '
 LC_TIME="en_GB.UTF-8"
 ' | sudo tee -a /etc/default/locale > /dev/null
