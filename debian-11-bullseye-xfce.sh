@@ -295,6 +295,10 @@ xfconf-query -c thunar -p /default-view -n -t string -s "ThunarCompactView"
 xfconf-query -c thunar -p /misc-confirm-close-multiple-tabs -n -t bool -s "false"
 
 
+# xfwm4 => mousewheel_rollup
+xfconf-query -c xfwm4 -p /general/mousewheel_rollup -n -t bool -s "false"
+
+
 # Workspace Switcher => Number of workspaces: 2
 xfconf-query -c xfwm4 -p /general/workspace_count -n -t int -s "2"
 
