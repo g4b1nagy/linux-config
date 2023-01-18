@@ -210,8 +210,8 @@ echo '{
 }' > /home/$USER/.config/sublime-text/Packages/User/Preferences.sublime-settings
 
 # Add .ini file syntax highlighting
-wget https://codeload.github.com/jwortmann/ini-syntax/tar.gz/refs/tags/v1.4.3
-tar -xzvf v1.4.3 --directory /home/$USER/.config/sublime-text/Packages/
+wget https://github.com/jwortmann/ini-syntax/archive/refs/tags/v1.5.0.tar.gz
+tar -xzvf v1.5.0.tar.gz --directory /home/$USER/.config/sublime-text/Packages/
 
 # Add .toml file syntax highlighting
 wget https://github.com/jasonwilliams/sublime_toml_highlighting/archive/refs/tags/v2.5.0.tar.gz
