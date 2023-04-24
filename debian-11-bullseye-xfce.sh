@@ -195,7 +195,7 @@ echo '{
     "color_scheme": "Monokai.sublime-color-scheme",
     "enable_tab_scrolling": false,
     "ensure_newline_at_eof_on_save": true,
-    "folder_exclude_patterns": [".git", "node_modules"],
+    "folder_exclude_patterns": [".git", "node_modules", "__pycache__"],
     "font_size": 10,
     "mini_diff": false,
     "show_definitions": false,
