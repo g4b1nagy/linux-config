@@ -13,33 +13,6 @@ email="john@doe.com"
 usermod -aG sudo $username
 
 # =========================================================================
-# Install WiFi firmware (https://wiki.debian.org/iwlwifi)
-# =========================================================================
-
-wget http://ftp.debian.org/debian/pool/non-free/f/firmware-nonfree/firmware-iwlwifi_20210315-3_all.deb
-sudo dpkg -i firmware-iwlwifi_20200421-1_all.deb
-sudo modprobe -r iwlwifi
-sudo modprobe iwlwifi
-
-# =========================================================================
-# Fix /etc/apt/sources.list (https://wiki.debian.org/SourcesList)
-# =========================================================================
-
-sudo cp /etc/apt/sources.list /etc/apt/sources.list_backup_$(date +%F_%T)
-
-echo "deb http://security.debian.org/debian-security bullseye-security main contrib non-free
-deb-src http://security.debian.org/debian-security bullseye-security main contrib non-free
-
-deb http://deb.debian.org/debian bullseye main non-free
-deb-src http://deb.debian.org/debian bullseye main non-free
-
-deb http://deb.debian.org/debian/ bullseye-updates main contrib non-free
-deb-src http://deb.debian.org/debian/ bullseye-updates main contrib non-free" | sudo tee /etc/apt/sources.list > /dev/null
-
-sudo apt update
-sudo apt upgrade
-
-# =========================================================================
 # Install packages
 # =========================================================================
 
@@ -65,13 +38,9 @@ vlc
 gvfs-backends
 gvfs-fuse
 mtp-tools
-
-firmware-iwlwifi
-firmware-linux
-firmware-sof-signed
 "
 
-sudo apt install $packages
+sudo apt install "${packages[@]}"
 
 # + https://www.sublimetext.com/docs/linux_repositories.html
 
@@ -101,6 +70,7 @@ alias py='python3'
 
 alias s='git status'
 alias d='git diff --minimal'
+alias dc='git diff --minimal --cached'
 alias c='git checkout'
 
 alias doff='xrandr --output eDP-1 --off'
@@ -117,19 +87,22 @@ set enable-bracketed-paste off
 
 echo "
 [general]
-abbreviate-tab-names=false
 compat-delete='delete-sequence'
 display-n=0
+display-tab-names=0
+gtk-use-system-default-theme=false
+hide-tabs-if-one-tab=false
 history-size=1000
 infinite-history=true
+load-guake-yml=true
 max-tab-name-length=14
 mouse-display=true
 open-tab-cwd=false
 prompt-on-quit=true
 quick-open-command-line='gedit %(file_path)s'
-restore-tabs-notify=false
+restore-tabs-notify=true
 restore-tabs-startup=false
-save-tabs-when-changed=false
+save-tabs-when-changed=true
 scroll-keystroke=true
 use-default-font=true
 use-popup=false
@@ -151,7 +124,6 @@ decrease-transparency='disabled'
 increase-height='disabled'
 increase-transparency='disabled'
 new-tab='<Primary><Shift>n'
-new-tab-home='disabled'
 next-tab='<Primary><Shift>Right'
 previous-tab='<Primary><Shift>Left'
 toggle-transparency='disabled'
@@ -203,15 +175,15 @@ echo '{
     "spell_check": false,
     "tab_completion": false,
     "tab_size": 4,
-    "theme": "Adaptive.sublime-theme",
+    "theme": "auto",
     "translate_tabs_to_spaces": true,
     "trim_only_modified_white_space": false,
     "trim_trailing_white_space_on_save": "all",
 }' > /home/$USER/.config/sublime-text/Packages/User/Preferences.sublime-settings
 
 # Add .ini file syntax highlighting
-wget https://github.com/jwortmann/ini-syntax/archive/refs/tags/v1.5.0.tar.gz
-tar -xzvf v1.5.0.tar.gz --directory /home/$USER/.config/sublime-text/Packages/
+wget https://github.com/jwortmann/ini-syntax/archive/refs/tags/v1.5.2.tar.gz
+tar -xzvf v1.5.2.tar.gz --directory /home/$USER/.config/sublime-text/Packages/
 
 # Add .toml file syntax highlighting
 wget https://github.com/jasonwilliams/sublime_toml_highlighting/archive/refs/tags/v2.5.0.tar.gz
@@ -228,7 +200,6 @@ echo "colorscheme molokai
 set expandtab
 set mouse-=a
 set shiftwidth=4
-set t_Co=256
 set tabstop=4
 syntax on" > /home/$USER/.vimrc
 
@@ -257,6 +228,13 @@ git config --global color.ui true
 git config --global init.defaultBranch master
 
 # =========================================================================
+# Configure Firefox
+# =========================================================================
+
+about:config
+toolkit.tabbox.switchByScrolling => true
+
+# =========================================================================
 # Set timezone
 # =========================================================================
 
@@ -282,9 +260,12 @@ LC_TIME="en_GB.UTF-8"
 # Power Manager => Show label: Percentage
 xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/show-panel-label -n -t int -s "1"
 
-# Clock => Format: %H:%M
+# Clock
 clock_plugin=$(xfconf-query -c xfce4-panel -p /plugins -l -v | grep clock | cut -d' ' -f 1)
-xfconf-query -c xfce4-panel -p $clock_plugin/digital-format -n -t string -s "%H:%M"
+# Layout: Time Only
+xfconf-query -c xfce4-panel -p $clock_plugin/digital-layout -n -t int -s "3"
+# Font:
+xfconf-query -c xfce4-panel -p $clock_plugin/digital-time-font -n -t string -s "Sans 11"
 
 
 # thunar => Preferences => View new folders using: Compact List View
@@ -319,7 +300,6 @@ xfconf-query -c xfce4-session -p /general/SaveOnExit -n -t bool -s "false"
 xfconf-query -c keyboards -p /Default/KeyRepeat/Delay -n -t int -s "250"
 xfconf-query -c keyboards -p /Default/KeyRepeat/Rate -n -t int -s "50"
 xfconf-query -c xfce4-keyboard-shortcuts -p "/commands/custom/Print" -n -t string -s "xfce4-screenshooter -f -s /home/$USER/Desktop/"
-xfconf-query -c xfce4-keyboard-shortcuts -p "/commands/custom/<Primary>Print" -n -t string -s "xfce4-screenshooter"
 
 
 # Mouse
@@ -355,12 +335,17 @@ xfconf-query -c xsettings -p /Net/IconThemeName -n -t string -s "Papirus"
 # =========================================================================
 
 echo "app=/usr/bin/display-im6.q16
+custom_action_command=none
 last_user=
+last_extension=png
 screenshot_dir=file:/home/$USER/Desktop
+enable_imgur_upload=true
+show_in_folder=false
 action=1
 delay=0
 region=1
-show_mouse=0" > /home/$USER/.config/xfce4/xfce4-screenshooter
+show_mouse=0
+show_border=1" > /home/$USER/.config/xfce4/xfce4-screenshooter
 
 # =========================================================================
 # xarchiver
@@ -369,7 +354,7 @@ show_mouse=0" > /home/$USER/.config/xfce4/xfce4-screenshooter
 mkdir -p /home/$USER/.config/xarchiver/
 
 echo "[xarchiver]
-preferred_format=11
+preferred_format=17
 prefer_unzip=true
 confirm_deletion=true
 sort_filename_content=false
@@ -385,12 +370,12 @@ preferred_extract_dir=/home/$USER/Desktop
 allow_sub_dir=0
 ensure_directory=true
 overwrite=false
-full_path=true
+full_path=2
 touch=false
 fresh=false
 update=false
 store_path=false
-updadd=false
+updadd=true
 freshen=false
 recurse=true
 solid_archive=false
