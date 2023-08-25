@@ -175,7 +175,7 @@ echo '{
     "spell_check": false,
     "tab_completion": false,
     "tab_size": 4,
-    "theme": "auto",
+    "theme": "Adaptive.sublime-theme",
     "translate_tabs_to_spaces": true,
     "trim_only_modified_white_space": false,
     "trim_trailing_white_space_on_save": "all",
