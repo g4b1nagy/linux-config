@@ -16,29 +16,29 @@ usermod -aG sudo $username
 # Install packages
 # =========================================================================
 
-packages="
-blueman
-chromium
-dconf-cli
-filezilla
-gimp
-git
-guake
-imagemagick
-inkscape
-ncal
-nginx
-postgresql
-redis-server
-redis-tools
-viewnior
-vim
-vlc
+packages=(
+    blueman
+    chromium
+    dconf-cli
+    filezilla
+    gimp
+    git
+    guake
+    imagemagick
+    inkscape
+    ncal
+    nginx
+    postgresql
+    redis-server
+    redis-tools
+    viewnior
+    vim
+    vlc
 
-gvfs-backends
-gvfs-fuse
-mtp-tools
-"
+    gvfs-backends
+    gvfs-fuse
+    mtp-tools
+)
 
 sudo apt install "${packages[@]}"
 
