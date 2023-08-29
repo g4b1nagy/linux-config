@@ -137,8 +137,10 @@ palette='#1C1C1D1D1919:#D0D01B1B2424:#A7A7D3D32C2C:#D8D8CFCF6767:#6161B8B8D0D0:#
 palette-name='Monokai'
 " | dconf load /apps/guake/
 
-mkdir -p /home/$USER/.config/autostart/
-cp /usr/share/applications/guake.desktop /home/$USER/.config/autostart/
+# For some reason, the ~/.config/autostart/ directory gets cleared out on reboot.
+# mkdir -p /home/$USER/.config/autostart/
+# cp /usr/share/applications/guake.desktop /home/$USER/.config/autostart/
+sudo cp /usr/share/applications/guake.desktop /etc/xdg/autostart/
 
 # =========================================================================
 # Configure Sublime Text
