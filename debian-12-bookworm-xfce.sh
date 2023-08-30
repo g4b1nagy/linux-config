@@ -281,6 +281,10 @@ xfconf-query -c xfce4-panel -p $clock_plugin/digital-layout -n -t int -s "3"
 # Font:
 xfconf-query -c xfce4-panel -p $clock_plugin/digital-time-font -n -t string -s "Sans 11"
 
+# Tasklist
+tasklist_plugin=$(xfconf-query -c xfce4-panel -p /plugins -l -v | grep tasklist | cut -d' ' -f 1)
+# Panel => Window Buttons => Group windows by application
+xfconf-query -c xfce4-panel -p $tasklist_plugin/grouping -n -t bool -s "false"
 
 # thunar => Preferences => View new folders using: Compact List View
 xfconf-query -c thunar -p /default-view -n -t string -s "ThunarCompactView"
