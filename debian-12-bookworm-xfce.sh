@@ -269,6 +269,11 @@ LC_TIME="en_GB.UTF-8"
 # Power Manager => Show label: Percentage
 xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/show-panel-label -n -t int -s "1"
 
+# Power Manager => System => When laptop lid is closed: => Switch off display
+xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/lid-action-on-ac -n -t int -s "0"
+xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/lid-action-on-battery -n -t int -s "0"
+
+
 # Clock
 clock_plugin=$(xfconf-query -c xfce4-panel -p /plugins -l -v | grep clock | cut -d' ' -f 1)
 # Layout: Time Only
