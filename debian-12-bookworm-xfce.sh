@@ -198,7 +198,9 @@ tar -xzvf v2.5.0.tar.gz --directory /home/$USER/.config/sublime-text/Packages/
 
 # Remove Noto fonts so the system can default to DejaVu instead.
 
-cp /usr/share/fontconfig/conf.avail/60-latin.conf ~/Documents/
+# cp /usr/share/fontconfig/conf.avail/60-latin.conf ~/Documents/
+
+sudo cp /usr/share/fontconfig/conf.avail/60-latin.conf /usr/share/fontconfig/conf.avail/60-latin.conf_backup_$(date +%F_%T)
 sudo sed -i 's/.*Noto.*//g' /usr/share/fontconfig/conf.avail/60-latin.conf
 
 
