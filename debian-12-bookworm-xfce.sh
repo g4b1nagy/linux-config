@@ -191,6 +191,17 @@ tar -xzvf v1.5.2.tar.gz --directory /home/$USER/.config/sublime-text/Packages/
 wget https://github.com/jasonwilliams/sublime_toml_highlighting/archive/refs/tags/v2.5.0.tar.gz
 tar -xzvf v2.5.0.tar.gz --directory /home/$USER/.config/sublime-text/Packages/
 
+
+# =========================================================================
+# Configure fonts
+# =========================================================================
+
+# Remove Noto fonts so the system can default to DejaVu instead.
+
+cp /usr/share/fontconfig/conf.avail/60-latin.conf ~/Documents/
+sudo sed -i 's/.*Noto.*//g' /usr/share/fontconfig/conf.avail/60-latin.conf
+
+
 # =========================================================================
 # Configure Vim
 # =========================================================================
