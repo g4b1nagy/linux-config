@@ -262,6 +262,14 @@ echo '
 LC_TIME="en_GB.UTF-8"
 ' | sudo tee -a /etc/default/locale > /dev/null
 
+
+# =========================================================================
+# Disable suspend and hibernation
+# https://wiki.debian.org/Suspend#Disable_suspend_and_hibernation
+# =========================================================================
+sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
+
+
 # =========================================================================
 # XFCE settings
 # =========================================================================
