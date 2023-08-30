@@ -77,9 +77,6 @@ alias doff='xrandr --output eDP-1 --off'
 alias don='xrandr --output eDP-1 --auto'
 " >> /home/$USER/.bashrc
 
-echo "
-set enable-bracketed-paste off
-" >> /home/$USER/.inputrc
 
 # =========================================================================
 # Configure Guake
