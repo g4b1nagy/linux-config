@@ -57,6 +57,7 @@ sudo apt install "${packages[@]}"
 # =========================================================================
 
 cp ~/.bashrc ~/.bashrc_backup_$(date +%F_%T)
+cp ~/.profile ~/.profile_backup_$(date +%F_%T)
 
 echo "
 
