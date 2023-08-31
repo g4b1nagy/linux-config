@@ -68,9 +68,9 @@ echo "
 
 function cd {
     builtin cd \"\$@\"
-    if [ -d .venv ]
+    if [ -d venv ]
     then
-        source .venv/bin/activate
+        source venv/bin/activate
     fi
 }
 
@@ -172,7 +172,7 @@ echo '{
     "color_scheme": "Monokai.sublime-color-scheme",
     "enable_tab_scrolling": false,
     "ensure_newline_at_eof_on_save": true,
-    "folder_exclude_patterns": [".git", ".venv", "__pycache__", "node_modules"],
+    "folder_exclude_patterns": [".git", "venv", "__pycache__", "node_modules"],
     "font_size": 10,
     "mini_diff": false,
     "show_definitions": false,
