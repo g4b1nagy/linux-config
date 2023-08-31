@@ -211,7 +211,7 @@ set shiftwidth=4
 set tabstop=4
 syntax on" > ~/.vimrc
 
-update-alternatives --set editor /usr/bin/vim.basic
+sudo update-alternatives --set editor /usr/bin/vim.basic
 
 # =========================================================================
 # Configure Git
@@ -311,8 +311,9 @@ sudo sed -i 's/.*Noto.*//g' /usr/share/fontconfig/conf.avail/60-latin.conf
 # Power Manager => System => When laptop lid is closed: => Switch off display
 xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/lid-action-on-ac -n -t int -s "0"
 xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/lid-action-on-battery -n -t int -s "0"
+xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/logind-handle-lid-switch -n -t bool -s "false"
 
-# Power Manager => Show label: Percentage
+# Power Manager Plugin => Show label: Percentage
 xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/show-panel-label -n -t int -s "1"
 
 # Disable power manager notifications
@@ -328,7 +329,7 @@ clock_plugin=$(xfconf-query -c xfce4-panel -p /plugins -l -v | grep clock | cut 
 # Layout: Time Only
 xfconf-query -c xfce4-panel -p $clock_plugin/digital-layout -n -t int -s "3"
 # Font:
-xfconf-query -c xfce4-panel -p $clock_plugin/digital-time-font -n -t string -s "Sans 11"
+xfconf-query -c xfce4-panel -p $clock_plugin/digital-time-font -n -t string -s "Sans 10"
 
 # thunar => Preferences => View new folders using: Compact List View
 xfconf-query -c thunar -p /default-view -n -t string -s "ThunarCompactView"
@@ -343,7 +344,7 @@ xfconf-query -c xfwm4 -p /general/mousewheel_rollup -n -t bool -s "false"
 xfconf-query -c xfwm4 -p /general/workspace_count -n -t int -s "2"
 
 # Launch GNOME services on startup
-xfconf-query -c xfce4-session -p /compat/LaunchGNOME -n -t bool -s "true"
+# xfconf-query -c xfce4-session -p /compat/LaunchGNOME -n -t bool -s "true"
 
 # Log Out => Save session for future logins
 xfconf-query -c xfce4-session -p /general/SaveOnExit -n -t bool -s "false"
@@ -362,6 +363,8 @@ xfconf-query -c pointers -p /Logitech_Wireless_Mouse/Acceleration -n -t double -
 # =========================================================================
 # XFCE theme (https://github.com/vinceliuice/Matcha-gtk-theme)
 # =========================================================================
+
+sudo apt-get install gtk2-engines-murrine gtk2-engines-pixbuf
 
 wget https://github.com/vinceliuice/Matcha-gtk-theme/archive/refs/tags/2023-04-03.tar.gz
 tar -xzvf 2023-04-03.tar.gz
