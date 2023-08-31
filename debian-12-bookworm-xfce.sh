@@ -34,6 +34,7 @@ packages=(
     ncal
     nginx
     postgresql
+    python3-venv
     redis-server
     sublime-text
     viewnior
