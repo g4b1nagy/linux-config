@@ -185,6 +185,7 @@ echo '{
     "folder_exclude_patterns": [".git", "venv", "__pycache__", ".ipynb_checkpoints", "node_modules"],
     "font_size": 10,
     "mini_diff": false,
+    "rulers": [88],
     "show_definitions": false,
     "show_git_status": false,
     "spell_check": false,
