@@ -356,7 +356,7 @@ xfconf-query -c xfwm4 -p /general/mousewheel_rollup -n -t bool -s "false"
 xfconf-query -c xfwm4 -p /general/workspace_count -n -t int -s "2"
 
 # Launch GNOME services on startup
-# xfconf-query -c xfce4-session -p /compat/LaunchGNOME -n -t bool -s "true"
+xfconf-query -c xfce4-session -p /compat/LaunchGNOME -n -t bool -s "true"
 
 # Log Out => Save session for future logins
 xfconf-query -c xfce4-session -p /general/SaveOnExit -n -t bool -s "false"
