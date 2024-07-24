@@ -182,7 +182,7 @@ echo '{
     "color_scheme": "Monokai.sublime-color-scheme",
     "enable_tab_scrolling": false,
     "ensure_newline_at_eof_on_save": true,
-    "folder_exclude_patterns": [".git", "venv", "__pycache__", ".ipynb_checkpoints", "node_modules"],
+    "folder_exclude_patterns": [".git", ".ipynb_checkpoints", ".mypy_cache", ".pytest_cache", ".ruff_cache", "__pycache__", "node_modules", "venv"],
     "font_size": 10,
     "mini_diff": false,
     "rulers": [88],
