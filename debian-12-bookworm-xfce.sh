@@ -78,6 +78,7 @@ alias grep='grep --color=auto'
 alias ls='ls -l --human-readable --color=auto'
 alias py='python3'
 
+alias b='git branch'
 alias c='git checkout'
 alias d='git diff --minimal'
 alias dc='git diff --minimal --cached'
