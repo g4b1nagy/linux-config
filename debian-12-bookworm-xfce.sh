@@ -68,7 +68,7 @@ echo "
 
 function cd {
     builtin cd \"\$@\"
-    if [ -d venv ]
+    if [[ -d venv || -d .venv ]]
     then
         source venv/bin/activate
     fi
