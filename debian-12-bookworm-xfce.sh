@@ -68,9 +68,12 @@ echo "
 
 function cd {
     builtin cd \"\$@\"
-    if [[ -d venv || -d .venv ]]
+    if [[ -d venv ]]
     then
         source venv/bin/activate
+    elif [[ -d .venv ]]
+    then
+        source .venv/bin/activate
     fi
 }
 
