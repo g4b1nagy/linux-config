@@ -77,6 +77,8 @@ function cd {
     fi
 }
 
+export PAGER='less -S'
+
 alias grep='grep --color=auto'
 alias ls='ls -l --human-readable --color=auto'
 alias py='python3'
