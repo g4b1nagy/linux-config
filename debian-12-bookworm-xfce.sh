@@ -207,10 +207,6 @@ echo '{
 wget https://github.com/jwortmann/ini-syntax/archive/refs/tags/v1.5.2.tar.gz
 tar -xzvf v1.5.2.tar.gz --directory ~/.config/sublime-text/Packages/
 
-# Add .toml syntax highlighting
-wget https://github.com/jasonwilliams/sublime_toml_highlighting/archive/refs/tags/v2.5.0.tar.gz
-tar -xzvf v2.5.0.tar.gz --directory ~/.config/sublime-text/Packages/
-
 # Add .tf syntax highlighting
 wget https://github.com/alexlouden/Terraform.tmLanguage/archive/refs/tags/1.2.0.tar.gz
 tar -xzvf 1.2.0.tar.gz --directory ~/.config/sublime-text/Packages/
